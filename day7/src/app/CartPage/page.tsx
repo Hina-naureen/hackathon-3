@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { getCartItems, removeFromCart, updateCartQuantity } from "../actions/actions";
+import { getCartItems, removeFromCart } from "../actions/actions";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
 import Swal from "sweetalert2";
