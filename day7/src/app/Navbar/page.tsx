@@ -114,10 +114,10 @@ function NavItem({ href, label }: NavItemProps) {
 function NavIcons() {
   return (
     <>
-      <NavIcon href="/account">
+      <NavIcon href="/Contact">
         <User className="h-5 w-5" />
       </NavIcon>
-      <NavIcon href="/search">
+      <NavIcon href="/About">
         <Search className="h-5 w-5" />
       </NavIcon>
       <NavIcon href="/wishlist">
