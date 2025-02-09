@@ -64,17 +64,23 @@ const CartPage = () => {
   };
 
   return (
-    <div className="p-6 bg-white min-h-screen flex flex-col items-center">
-      <h1 className="text-3xl font-extrabold mb-8 text-[#738b6a]">Shopping Cart</h1>
-      <div className="w-full max-w-4xl space-y-6">
+    <div className="p-4 md:p-6 bg-white min-h-screen flex flex-col items-center">
+      <h1 className="text-2xl md:text-3xl font-extrabold mb-6 md:mb-8 text-[#738b6a] text-center">
+        Shopping Cart
+      </h1>
+
+      <div className="w-full max-w-6xl space-y-4 md:space-y-6">
         {cartItems.length > 0 ? (
           cartItems.map((item) => (
-            <div key={item._id || Math.random()} className="flex items-center justify-between bg-gray-100 p-5 rounded-xl shadow-md">
-              <div className="flex items-center">
+            <div
+              key={item._id || Math.random()}
+              className="flex flex-col md:flex-row items-center justify-between bg-gray-100 p-4 md:p-5 rounded-xl shadow-md space-y-3 md:space-y-0"
+            >
+              <div className="flex items-center space-x-3 md:space-x-6 w-full md:w-auto">
                 {item.image?.asset?._ref ? (
                   <Image
                     src={urlFor(item.image).url()}
-                    className="w-16 h-16 object-cover rounded-lg"
+                    className="w-14 h-14 md:w-16 md:h-16 object-cover rounded-lg"
                     alt={item.name}
                     width={64}
                     height={64}
@@ -82,19 +88,19 @@ const CartPage = () => {
                 ) : (
                   <Image
                     src="/placeholder-image.png"
-                    className="w-16 h-16 object-cover rounded-lg"
+                    className="w-14 h-14 md:w-16 md:h-16 object-cover rounded-lg"
                     alt="No Image Available"
                     width={64}
                     height={64}
                   />
                 )}
-                <div className="ml-6">
-                  <h2 className="text-xl font-semibold text-[#738b6a]">{item.name}</h2>
-                  <p className="text-gray-500 mt-1">Price: Rs {item.price}</p>
+                <div>
+                  <h2 className="text-lg md:text-xl font-semibold text-[#738b6a]">{item.name}</h2>
+                  <p className="text-gray-500 mt-1 text-sm md:text-base">Price: Rs {item.price}</p>
                 </div>
               </div>
 
-              <div className="flex items-center space-x-4">
+              <div className="flex items-center space-x-4 w-full md:w-auto justify-between">
                 <div className="flex items-center border border-gray-300 rounded-lg">
                   <button
                     className="px-3 py-1 bg-gray-200 hover:bg-gray-300 transition"
@@ -102,7 +108,7 @@ const CartPage = () => {
                   >
                     -
                   </button>
-                  <span className="px-4">{item.inventory || 1}</span>
+                  <span className="px-4 text-sm md:text-base">{item.inventory || 1}</span>
                   <button
                     className="px-3 py-1 bg-gray-200 hover:bg-gray-300 transition"
                     onClick={() => handleQuantityChange(item._id, (item.inventory || 1) + 1)}
@@ -126,20 +132,20 @@ const CartPage = () => {
       </div>
 
       {cartItems.length > 0 && (
-        <div className="mt-10 w-full max-w-4xl bg-white p-6 rounded-xl shadow-lg border border-[#738b6a]">
-          <div className="flex justify-between items-center text-xl font-semibold">
+        <div className="mt-8 w-full max-w-6xl bg-white p-5 md:p-6 rounded-xl shadow-lg border border-[#738b6a]">
+          <div className="flex flex-col md:flex-row justify-between items-center text-lg md:text-xl font-semibold space-y-3 md:space-y-0">
             <span>Total:</span>
-            <span className="text-[#738b6a]">Rs {totalPrice.toFixed(2)}</span>
+            <span className="text-[#738b6a] text-lg md:text-xl">Rs {totalPrice.toFixed(2)}</span>
           </div>
 
           <button
             onClick={handleCheckout}
-            className="mt-6 w-full px-4 py-3 bg-[#738b6a] text-white text-lg font-semibold rounded-lg hover:bg-opacity-80 transition"
+            className="mt-5 w-full px-4 py-3 bg-[#738b6a] text-white text-lg font-semibold rounded-lg hover:bg-opacity-80 transition"
           >
             Proceed to Checkout
           </button>
 
-          <Link href="/shop" className="mt-6 inline-block text-[#738b6a] underline">
+          <Link href="/shop" className="mt-5 inline-block text-[#738b6a] underline text-center md:text-left w-full">
             Continue Shopping
           </Link>
         </div>
